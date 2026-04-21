@@ -3,218 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Alquimia da Farinha | Benfica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <title>Alquimia da Farinha | O Segredo de Benfica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --ouro: #c5a059;
             --cafe: #3e2723;
             --creme: #fffaf0;
             --texto: #4e342e;
+            --suave: #e6e1d9;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--creme); color: var(--texto); scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--creme); color: var(--texto); line-height: 1.7; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
-        /* Navegação */
+        /* Header */
         header {
-            padding: 20px 5%;
+            padding: 25px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 250, 240, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 250, 240, 0.95);
+            backdrop-filter: blur(8px);
             position: fixed;
             width: 100%;
             z-index: 100;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
         }
 
-        .logo { font-size: 1.8rem; font-weight: 700; color: var(--cafe); letter-spacing: -1px; }
-        nav a { text-decoration: none; color: var(--texto); margin-left: 25px; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: var(--cafe); letter-spacing: 2px; }
+        nav a { text-decoration: none; color: var(--texto); margin-left: 30px; font-weight: 400; font-size: 0.85rem; letter-spacing: 1px; transition: 0.3s; text-transform: uppercase; }
         nav a:hover { color: var(--ouro); }
 
-        /* Hero */
+        /* Hero - Igual ao anterior */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             padding: 0 10%;
-            background: linear-gradient(to right, rgba(255,250,240,0.9), rgba(255,250,240,0.2)), 
+            background: linear-gradient(to right, rgba(255,250,240,0.85), rgba(255,250,240,0.2)), 
                         url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
 
-        .hero-content { max-width: 600px; }
-        .hero h1 { font-size: 5rem; line-height: 0.9; color: var(--cafe); margin-bottom: 20px; }
-        .hero p { font-size: 1.1rem; margin-bottom: 30px; border-left: 3px solid var(--ouro); padding-left: 20px; }
+        .hero-content { max-width: 650px; }
+        .hero h1 { font-size: 5rem; line-height: 1; color: var(--cafe); margin-bottom: 25px; }
+        .hero p { font-size: 1.2rem; font-style: italic; color: #6d4c41; margin-bottom: 35px; border-left: 2px solid var(--ouro); padding-left: 25px; }
 
-        /* Especialidades */
-        section { padding: 100px 10%; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 3rem; color: var(--cafe); }
+        /* Especialidades Humanizadas */
+        section { padding: 120px 10%; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 3.5rem; color: var(--cafe); margin-bottom: 15px; }
+        
+        .grid-especialidades { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; }
+        .item-artesanal { background: white; border-radius: 4px; padding: 20px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); border: 1px solid transparent; }
+        .item-artesanal:hover { transform: translateY(-10px); border-color: var(--ouro); box-shadow: 0 20px 40px rgba(62, 39, 35, 0.05); }
+        .item-artesanal img { width: 100%; height: 350px; object-fit: cover; border-radius: 2px; margin-bottom: 25px; }
+        .item-artesanal h3 { font-size: 2.2rem; color: var(--cafe); margin-bottom: 15px; }
+        .item-artesanal p { font-size: 1.05rem; color: #5d4037; font-weight: 300; line-height: 1.8; }
 
-        .grid-doces { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .doce-card { background: white; padding: 15px; border-radius: 2px; box-shadow: 20px 20px 60px #e6e1d9; border: 1px solid #eee; }
-        .doce-card img { width: 100%; height: 300px; object-fit: cover; filter: sepia(20%); }
-        .doce-info { padding: 20px 10px; text-align: center; }
-        .doce-info h3 { font-size: 1.8rem; margin-bottom: 10px; color: var(--cafe); }
+        /* Localização Real */
+        .mapa-seccao { background: #f4f1ea; }
+        .mapa-box { border: 1px solid var(--ouro); padding: 10px; background: white; position: relative; }
+        iframe { width: 100%; height: 550px; border: 0; display: block; filter: sepia(10%) contrast(90%); }
 
-        /* Mapa Real de Benfica */
-        .mapa-container { border: 10px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        iframe { width: 100%; height: 500px; border: 0; display: block; }
-
-        /* Overlay de Loading (O teu truque) */
-        #loading-overlay {
+        /* Overlay de Loading Sofisticado */
+        #loading-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(62, 39, 35, 0.98);
+            background: var(--cafe);
             display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
-            color: white;
+            z-index: 9999;
+            color: var(--creme);
+        }
+
+        .loader-wrap { width: 280px; text-align: center; }
+        .bar-bg { height: 2px; width: 100%; background: rgba(255,255,255,0.1); margin: 25px 0; position: relative; }
+        #bar-fill { height: 100%; width: 0%; background: var(--ouro); box-shadow: 0 0 15px var(--ouro); }
+        
+        #status-text { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 5px; font-style: italic; }
+        #percent-display { font-size: 0.8rem; letter-spacing: 2px; opacity: 0.7; }
+        
+        #error-msg { 
+            margin-top: 30px; 
+            padding: 20px; 
+            border: 1px solid rgba(255, 100, 100, 0.3); 
+            background: rgba(255,0,0,0.05); 
+            display: none; 
             text-align: center;
         }
+        .error-code { font-weight: 700; color: #ff8a80; font-size: 1.2rem; display: block; margin-bottom: 10px; }
+        .close-btn { margin-top: 40px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; border-bottom: 1px solid var(--ouro); padding-bottom: 5px; }
 
-        .loader-bar {
-            width: 300px;
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
+        footer { background: var(--cafe); color: var(--creme); padding: 80px 10% 40px; text-align: center; }
+        .link-social { color: var(--ouro); text-decoration: none; margin: 0 20px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.9rem; }
+        .link-social:hover { color: white; }
 
-        #progress {
-            position: absolute;
-            height: 100%;
-            width: 0%;
-            background: var(--ouro);
-            transition: width 0.1s linear;
-        }
-
-        #error-msg { margin-top: 20px; color: #ffab91; display: none; max-width: 250px; }
-        .close-loading { margin-top: 30px; cursor: pointer; text-decoration: underline; font-size: 0.8rem; opacity: 0.6; }
-
-        footer { background: var(--cafe); color: var(--creme); padding: 60px 10%; text-align: center; }
-        .social-trigger { color: var(--ouro); text-decoration: none; margin: 0 15px; font-weight: bold; cursor: pointer; }
-
-        @media (max-width: 768px) { .hero h1 { font-size: 3rem; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 3.2rem; } .grid-especialidades { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <div id="loading-overlay">
-        <h2 id="load-text">A ligar ao servidor...</h2>
-        <div class="loader-bar"><div id="progress"></div></div>
-        <div id="percent">0%</div>
-        <div id="error-msg">Não foi possível estabelecer ligação, tente novamente mais tarde.</div>
-        <div class="close-loading" onclick="closeLoader()">[ fechar ]</div>
+    <div id="loading-screen">
+        <div class="loader-wrap">
+            <div id="status-text">A preparar conexão...</div>
+            <div class="bar-bg"><div id="bar-fill"></div></div>
+            <div id="percent-display">0%</div>
+            
+            <div id="error-msg">
+                <span class="error-code">ERRO 404</span>
+                A página solicitada não respondeu a tempo.<br>
+                Não foi possível estabelecer ligação ao servidor externo.
+            </div>
+            
+            <div class="close-btn" onclick="hideLoader()">Voltar para a Pastelaria</div>
+        </div>
     </div>
 
     <header>
         <div class="logo">ALQUIMIA.</div>
         <nav>
             <a href="#home">Início</a>
-            <a href="#especialidades">Sabores</a>
-            <a href="#onde">Onde Estamos</a>
+            <a href="#sabores">Os Nossos Sabores</a>
+            <a href="#onde">Localização</a>
         </nav>
     </header>
 
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Mãos Sujas de Farinha, Coração Cheio.</h1>
-            <p>Em Benfica, não fazemos bolos. Criamos memórias quentes, saídas do forno às 7 da manhã. Sem pressas, como antigamente.</p>
-            <a href="#onde" style="color: var(--cafe); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--ouro);">Visite a nossa oficina →</a>
+            <p>Em Benfica, o tempo corre mais devagar. Aqui não se "fabrica", cria-se com paciência, ovos frescos e o silêncio das madrugadas lisboetas.</p>
+            <a href="#sabores" style="color: var(--cafe); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--ouro); padding-bottom: 5px;">Descobrir a fornada de hoje</a>
         </div>
     </section>
 
-    <section id="especialidades">
-        <div class="section-title">
+    <section id="sabores">
+        <div class="section-header">
             <h2>As Nossas Obsessões</h2>
             <p>Focamo-nos em fazer pouco, mas fazer perfeito.</p>
         </div>
-        <div class="grid-doces">
-            <div class="doce-card">
+        <div class="grid-especialidades">
+            <div class="item-artesanal">
                 <img src="imagem_2026-04-21_222807686.png" alt="Pastel de Nata">
-                <div class="doce-info">
-                    <h3>O Nata</h3>
-                    <p>Massa artesanal que "estala" no ouvido. Receita secreta da Avó Maria.</p>
-                </div>
+                <h3>O Nata</h3>
+                <p>Dizem que o segredo está na massa, mas nós acreditamos que é o som. Aquele "estalido" perfeito ao morder, seguido pelo creme que ainda guarda o calor do forno. É o nosso bom-dia para o bairro.</p>
             </div>
-            <div class="doce-card">
+            <div class="item-artesanal">
                 <img src="imagem_2026-04-21_222843379.png" alt="Bola de Berlim">
-                <div class="doce-info">
-                    <h3>A Bola</h3>
-                    <p>Frita em óleo limpo, recheada até ao limite do possível.</p>
-                </div>
+                <h3>A Bola</h3>
+                <p>Há quem as coma só com os pés na areia, mas aqui o verão vive o ano inteiro. Massa leve, açúcar que teima em ficar nos lábios e um recheio generoso que parece nunca acabar. Sem culpas, só prazer.</p>
             </div>
-            <div class="doce-card">
+            <div class="item-artesanal">
                 <img src="imagem_2026-04-21_223657459.png" alt="Queijadas de Sintra">
-                <div class="doce-info">
-                    <h3>A Queijada</h3>
-                    <p>Trazemos Sintra até Benfica com a frescura do queijo da região.</p>
-                </div>
+                <h3>A Queijada</h3>
+                <p>Trouxemos a mística de Sintra para a calçada de Benfica. Um equilíbrio delicado entre a frescura do queijo e o perfume da canela. É densa, é doce e sabe a tarde de domingo em família.</p>
             </div>
         </div>
     </section>
 
-    <section id="onde" style="background: #efeadf;">
-        <div class="section-title">
-            <h2>Fora da Rota Turística</h2>
-            <p>Estamos onde Lisboa é real: No coração de Benfica.</p>
+    <section id="onde" class="mapa-seccao">
+        <div class="section-header">
+            <h2>Onde a Tradição Ganha Vida</h2>
+            <p>Fuja do roteiro turístico e venha sentir o cheiro a pão quente na Estrada de Benfica.</p>
         </div>
-        <div class="mapa-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.115854890066!2d-9.20456102341908!3d38.74955745543169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1932cf496d5a13%3A0x6b772023023e3e4a!2sEstrada%20de%20Benfica%2C%20Lisboa!5e0!3m2!1spt!2spt!4v1713735000000!5m2!1spt!2spt" allowfullscreen="" loading="lazy"></iframe>
+        <div class="mapa-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12450.485121422734!2d-9.208453482617188!3d38.74945550000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecc8830156d91%3A0x67399f66a877549c!2sEstrada%20de%20Benfica%2C%20Lisboa!5e0!3m2!1spt-PT!2spt!4v1713735000000!5m2!1spt-PT!2spt" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
     <footer>
-        <p style="margin-bottom: 20px;">Siga a nossa fornada (se conseguir):</p>
-        <div style="margin-bottom: 40px;">
-            <span class="social-trigger" onclick="startLoading('Instagram')">INSTAGRAM</span>
-            <span class="social-trigger" onclick="startLoading('Facebook')">FACEBOOK</span>
-            <span class="social-trigger" onclick="startLoading('TripAdvisor')">TRIPADVISOR</span>
+        <p style="margin-bottom: 25px; font-style: italic; opacity: 0.8;">Siga o rasto da farinha:</p>
+        <div style="margin-bottom: 50px;">
+            <span class="link-social" onclick="showLoader('Instagram')">INSTAGRAM</span>
+            <span class="link-social" onclick="showLoader('Facebook')">FACEBOOK</span>
+            <span class="link-social" onclick="showLoader('TripAdvisor')">TRIPADVISOR</span>
         </div>
-        <p>© 2026 Alquimia da Farinha. Estrada de Benfica, 450 - Lisboa.</p>
+        <p style="font-size: 0.75rem; letter-spacing: 1px; opacity: 0.5;">© 2026 ALQUIMIA DA FARINHA. ESTRADA DE BENFICA, 450 - LISBOA.</p>
     </footer>
 
     <script>
-        function startLoading(platform) {
-            const overlay = document.getElementById('loading-overlay');
-            const progress = document.getElementById('progress');
-            const percentText = document.getElementById('percent');
-            const loadText = document.getElementById('load-text');
-            const errorMsg = document.getElementById('error-msg');
-
-            overlay.style.display = 'flex';
-            errorMsg.style.display = 'none';
-            loadText.innerText = "A carregar " + platform + "...";
+        function showLoader(target) {
+            const screen = document.getElementById('loading-screen');
+            const bar = document.getElementById('bar-fill');
+            const percent = document.getElementById('percent-display');
+            const status = document.getElementById('status-text');
+            const error = document.getElementById('error-msg');
             
-            let width = 0;
+            screen.style.display = 'flex';
+            error.style.display = 'none';
+            status.innerText = "A ligar ao " + target + "...";
+            
+            let current = 0;
+            // O intervalo agora é mais lento para parecer um carregamento real e pesado
             const interval = setInterval(() => {
-                if (width >= 78) {
+                if (current >= 78) {
                     clearInterval(interval);
-                    loadText.innerText = "Erro de Sincronização";
-                    errorMsg.style.display = 'block';
+                    status.innerText = "Falha na Sincronização";
+                    error.style.display = 'block';
                 } else {
-                    width++;
-                    progress.style.width = width + '%';
-                    percentText.innerText = width + '%';
+                    // Incremento variável para parecer "orgânico"
+                    current += Math.random() * 2; 
+                    if (current > 78) current = 78;
+                    
+                    bar.style.width = current + '%';
+                    percent.innerText = Math.floor(current) + '%';
                 }
-            }, 30); // Velocidade do loading
+            }, 80); 
         }
 
-        function closeLoader() {
-            document.getElementById('loading-overlay').style.display = 'none';
-            document.getElementById('progress').style.width = '0%';
-            document.getElementById('percent').innerText = '0%';
+        function hideLoader() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('bar-fill').style.width = '0%';
         }
     </script>
-
 </body>
 </html>
