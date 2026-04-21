@@ -1,1 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce Tradição | Pastelaria Artesanal</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fdfaf6;
+            scroll-behavior: smooth;
+        }
 
+        /* Navegação */
+        nav {
+            background-color: #5d4037;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d7ccc8;
+        }
+
+        /* Secções */
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #5d4037;
+            border-bottom: 2px solid #d7ccc8;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
+
+        /* Especialidades */
+        .especialidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px 0;
+            color: #795548;
+        }
+
+        /* Localização */
+        .map-container {
+            text-align: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-local {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #5d4037;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#localizacao">Onde Estamos</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Doce Tradição</h1>
+        <p>O sabor autêntico de Lisboa, agora mais perto de si.</p>
+    </section>
+
+    <section id="especialidades">
+        <h2>As Nossas Especialidades</h2>
+        <div class="especialidades-grid">
+            <div class="card">
+                <img src="imagem_2026-04-21_222807686.png" alt="Pastel de Nata">
+                <div class="card-content">
+                    <h3>Pastel de Nata</h3>
+                    <p>O clássico lisboeta, com massa folhada estaladiça e creme aveludado.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="imagem_2026-04-21_222843379.png" alt="Bola de Berlim">
+                <div class="card-content">
+                    <h3>Bola de Berlim</h3>
+                    <p>Fofas e generosamente recheadas com o melhor creme pasteleiro.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="imagem_2026-04-21_223657459.png" alt="Queijadas de Sintra">
+                <div class="card-content">
+                    <h3>Queijadas de Sintra</h3>
+                    <p>O equilíbrio perfeito entre o queijo fresco, açúcar e canela.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="localizacao">
+        <h2>Localização</h2>
+        <div class="map-container">
+            <div class="info-local">
+                <p><strong>Morada:</strong> Estrada Nacional 1, Vila Franca de Xira (Área Metropolitana de Lisboa)</p>
+                <p><em>Encontre-nos fora da confusão do centro, com estacionamento fácil!</em></p>
+            </div>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12423.864386762312!2d-8.9954477!3d38.9555437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19207e997a3a93%3A0x400ebbde49033d0!2sVila%20Franca%20de%20Xira!5e0!3m2!1spt!2spt!4v1713735000000!5m2!1spt!2spt" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Doce Tradição - Pastelaria em Lisboa. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
