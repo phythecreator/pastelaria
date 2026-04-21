@@ -3,353 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pastelaria d'Ouro | Tradição em Benfica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>A Alquimia da Farinha | Benfica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #5d4037; /* Castanho Café */
-            --accent: #d4a373;  /* Dourado Massa */
-            --bg: #fffcf9;      /* Creme suave */
-            --text: #2d2424;
+            --ouro: #c5a059;
+            --cafe: #3e2723;
+            --creme: #fffaf0;
+            --texto: #4e342e;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--creme); color: var(--texto); scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Header e Navegação */
+        /* Navegação */
         header {
-            background: rgba(255, 252, 249, 0.95);
-            padding: 1.5rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            background: rgba(255, 250, 240, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 1px;
-        }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--cafe); letter-spacing: -1px; }
+        nav a { text-decoration: none; color: var(--texto); margin-left: 25px; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--ouro); }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            text-transform: uppercase;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1920&q=80');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background: linear-gradient(to right, rgba(255,250,240,0.9), rgba(255,250,240,0.2)), 
+                        url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            display: flex;
+        }
+
+        .hero-content { max-width: 600px; }
+        .hero h1 { font-size: 5rem; line-height: 0.9; color: var(--cafe); margin-bottom: 20px; }
+        .hero p { font-size: 1.1rem; margin-bottom: 30px; border-left: 3px solid var(--ouro); padding-left: 20px; }
+
+        /* Especialidades */
+        section { padding: 100px 10%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 3rem; color: var(--cafe); }
+
+        .grid-doces { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .doce-card { background: white; padding: 15px; border-radius: 2px; box-shadow: 20px 20px 60px #e6e1d9; border: 1px solid #eee; }
+        .doce-card img { width: 100%; height: 300px; object-fit: cover; filter: sepia(20%); }
+        .doce-info { padding: 20px 10px; text-align: center; }
+        .doce-info h3 { font-size: 1.8rem; margin-bottom: 10px; color: var(--cafe); }
+
+        /* Mapa Real de Benfica */
+        .mapa-container { border: 10px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        iframe { width: 100%; height: 500px; border: 0; display: block; }
+
+        /* Overlay de Loading (O teu truque) */
+        #loading-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(62, 39, 35, 0.98);
+            display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            z-index: 2000;
             color: white;
             text-align: center;
-            padding: 0 20px;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            background-color: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: scale(1.05);
-        }
-
-        /* Secções Gerais */
-        section {
-            padding: 100px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        .section-title .underline {
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-            margin: 15px auto;
-        }
-
-        /* Especialidades */
-        .grid-especialidades {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .item-card {
-            background: white;
-            border-radius: 15px;
+        .loader-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            margin: 20px 0;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: 0.4s;
         }
 
-        .item-card:hover {
-            transform: translateY(-10px);
+        #progress {
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            background: var(--ouro);
+            transition: width 0.1s linear;
         }
 
-        .item-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+        #error-msg { margin-top: 20px; color: #ffab91; display: none; max-width: 250px; }
+        .close-loading { margin-top: 30px; cursor: pointer; text-decoration: underline; font-size: 0.8rem; opacity: 0.6; }
 
-        .item-info {
-            padding: 25px;
-            text-align: center;
-        }
+        footer { background: var(--cafe); color: var(--creme); padding: 60px 10%; text-align: center; }
+        .social-trigger { color: var(--ouro); text-decoration: none; margin: 0 15px; font-weight: bold; cursor: pointer; }
 
-        .item-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        /* Horários e Contactos */
-        .info-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 50px;
-            justify-content: center;
-            background: #fff;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-        }
-
-        .info-box {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .info-box h4 {
-            margin-bottom: 20px;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Localização */
-        .map-section {
-            background: #f4eee8;
-        }
-
-        .map-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .map-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 450px;
-            border: 0;
-            border-radius: 15px;
-            filter: grayscale(0.2);
-        }
-
-        /* Rodapé */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 50px 10% 20px;
-            text-align: center;
-        }
-
-        .social-links {
-            margin-bottom: 30px;
-        }
-
-        .social-links a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 10px 20px;
-            border-radius: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .map-wrapper { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-            header { flex-direction: column; }
-            nav ul { margin-top: 20px; }
-            nav ul li { margin: 0 10px; }
-        }
+        @media (max-width: 768px) { .hero h1 { font-size: 3rem; } }
     </style>
 </head>
 <body>
 
+    <div id="loading-overlay">
+        <h2 id="load-text">A ligar ao servidor...</h2>
+        <div class="loader-bar"><div id="progress"></div></div>
+        <div id="percent">0%</div>
+        <div id="error-msg">Não foi possível estabelecer ligação, tente novamente mais tarde.</div>
+        <div class="close-loading" onclick="closeLoader()">[ fechar ]</div>
+    </div>
+
     <header>
-        <div class="logo">PASTELARIA D'OURO</div>
+        <div class="logo">ALQUIMIA.</div>
         <nav>
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#especialidades">Especialidades</a></li>
-                <li><a href="#loja">A Loja</a></li>
-                <li><a href="#localizacao">Contactos</a></li>
-            </ul>
+            <a href="#home">Início</a>
+            <a href="#especialidades">Sabores</a>
+            <a href="#onde">Onde Estamos</a>
         </nav>
     </header>
 
     <section id="home" class="hero">
-        <h1>O Segredo da Massa</h1>
-        <p>Receitas artesanais passadas de geração em geração, servidas diariamente no coração de Benfica.</p>
-        <a href="#especialidades" class="btn">Ver Menu</a>
+        <div class="hero-content">
+            <h1>Mãos Sujas de Farinha, Coração Cheio.</h1>
+            <p>Em Benfica, não fazemos bolos. Criamos memórias quentes, saídas do forno às 7 da manhã. Sem pressas, como antigamente.</p>
+            <a href="#onde" style="color: var(--cafe); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--ouro);">Visite a nossa oficina →</a>
+        </div>
     </section>
 
     <section id="especialidades">
         <div class="section-title">
-            <h2>As Nossas Joias</h2>
-            <div class="underline"></div>
+            <h2>As Nossas Obsessões</h2>
+            <p>Focamo-nos em fazer pouco, mas fazer perfeito.</p>
         </div>
-        <div class="grid-especialidades">
-            <div class="item-card">
+        <div class="grid-doces">
+            <div class="doce-card">
                 <img src="imagem_2026-04-21_222807686.png" alt="Pastel de Nata">
-                <div class="item-info">
-                    <h3>Pastel de Nata</h3>
-                    <p>Crocante por fora, cremoso por dentro. A nossa obra-prima premiada.</p>
+                <div class="doce-info">
+                    <h3>O Nata</h3>
+                    <p>Massa artesanal que "estala" no ouvido. Receita secreta da Avó Maria.</p>
                 </div>
             </div>
-            <div class="item-card">
+            <div class="doce-card">
                 <img src="imagem_2026-04-21_222843379.png" alt="Bola de Berlim">
-                <div class="item-info">
-                    <h3>Bola de Berlim</h3>
-                    <p>Massa leve e fofa com o tradicional creme de ovo caseiro.</p>
+                <div class="doce-info">
+                    <h3>A Bola</h3>
+                    <p>Frita em óleo limpo, recheada até ao limite do possível.</p>
                 </div>
             </div>
-            <div class="item-card">
+            <div class="doce-card">
                 <img src="imagem_2026-04-21_223657459.png" alt="Queijadas de Sintra">
-                <div class="item-info">
-                    <h3>Queijadas de Sintra</h3>
-                    <p>A textura densa e o aroma a canela que transportam para a vila mágica.</p>
+                <div class="doce-info">
+                    <h3>A Queijada</h3>
+                    <p>Trazemos Sintra até Benfica com a frescura do queijo da região.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="loja" style="background-color: #fff;">
-        <div class="info-container">
-            <div class="info-box">
-                <h4>Horário de Inverno</h4>
-                <p>Segunda a Sexta: 07:00 – 20:00</p>
-                <p>Sábado e Domingo: 08:00 – 19:00</p>
-            </div>
-            <div class="info-box">
-                <h4>Encomendas</h4>
-                <p>Telefone: +351 217 000 000</p>
-                <p>Email: ola@pasteldouro.pt</p>
-            </div>
-            <div class="info-box">
-                <h4>Filosofia</h4>
-                <p>Usamos apenas ingredientes locais, farinhas moidas em pedra e muito amor ao que fazemos.</p>
-            </div>
+    <section id="onde" style="background: #efeadf;">
+        <div class="section-title">
+            <h2>Fora da Rota Turística</h2>
+            <p>Estamos onde Lisboa é real: No coração de Benfica.</p>
         </div>
-    </section>
-
-    <section id="localizacao" class="map-section">
-        <div class="map-wrapper">
-            <div class="map-text">
-                <h3>Onde nos encontrar</h3>
-                <p>Estamos situados na histórica Estrada de Benfica, longe da confusão do centro histórico, onde Lisboa ainda sabe a bairro.</p>
-                <br>
-                <p><strong>Morada:</strong><br>Estrada de Benfica, 450<br>1500-100 Lisboa</p>
-                <p><em>(Próximo ao Mercado de Benfica)</em></p>
-            </div>
-            <div class="map-iframe">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12423.864386762312!2d-8.9954477!3d38.9555437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19207e997a3a93%3A0x400ebbde49033d0!2sVila%20Franca%20de%20Xira!5e0!3m2!1spt!2spt!4v1713735000000!5m2!1spt!2spt" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
+        <div class="mapa-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.115854890066!2d-9.20456102341908!3d38.74955745543169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1932cf496d5a13%3A0x6b772023023e3e4a!2sEstrada%20de%20Benfica%2C%20Lisboa!5e0!3m2!1spt!2spt!4v1713735000000!5m2!1spt!2spt" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
     <footer>
-        <div class="social-links">
-            <a href="#">INSTAGRAM</a>
-            <a href="#">FACEBOOK</a>
-            <a href="#">TRIPADVISOR</a>
+        <p style="margin-bottom: 20px;">Siga a nossa fornada (se conseguir):</p>
+        <div style="margin-bottom: 40px;">
+            <span class="social-trigger" onclick="startLoading('Instagram')">INSTAGRAM</span>
+            <span class="social-trigger" onclick="startLoading('Facebook')">FACEBOOK</span>
+            <span class="social-trigger" onclick="startLoading('TripAdvisor')">TRIPADVISOR</span>
         </div>
-        <p>© 2026 Pastelaria d'Ouro. Fabricação Própria em Lisboa.</p>
+        <p>© 2026 Alquimia da Farinha. Estrada de Benfica, 450 - Lisboa.</p>
     </footer>
+
+    <script>
+        function startLoading(platform) {
+            const overlay = document.getElementById('loading-overlay');
+            const progress = document.getElementById('progress');
+            const percentText = document.getElementById('percent');
+            const loadText = document.getElementById('load-text');
+            const errorMsg = document.getElementById('error-msg');
+
+            overlay.style.display = 'flex';
+            errorMsg.style.display = 'none';
+            loadText.innerText = "A carregar " + platform + "...";
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 78) {
+                    clearInterval(interval);
+                    loadText.innerText = "Erro de Sincronização";
+                    errorMsg.style.display = 'block';
+                } else {
+                    width++;
+                    progress.style.width = width + '%';
+                    percentText.innerText = width + '%';
+                }
+            }, 30); // Velocidade do loading
+        }
+
+        function closeLoader() {
+            document.getElementById('loading-overlay').style.display = 'none';
+            document.getElementById('progress').style.width = '0%';
+            document.getElementById('percent').innerText = '0%';
+        }
+    </script>
 
 </body>
 </html>
